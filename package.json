@@ -1,0 +1,22 @@
+{
+  "name": "TemperatureExpressRouting",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "format": "prettier "
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "ejs": "^2.6.1",
+    "express": "^4.16.4",
+    "forecastio": "^2.0.0",
+    "zippity-do-dah": "0.0.3"
+  },
+  "devDependencies": {
+    "prettier": "^1.16.4"
+  }
+}
