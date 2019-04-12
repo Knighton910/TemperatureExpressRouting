@@ -1,33 +1,33 @@
 const path = require('path')
 const express = require('express')
 const zipdb = require('zippity-do-dah')
-const ForecastIO = require('forecastio')
+const ForecastIo = require('forecastio')
 
 const app = express()
-const weather = new ForecastIO('placeholder')
+const weather = new ForecastIo('6ef0b66dfc7edba1592c2d9abc351582')
 
 app.use(express.static(path.resolve(__dirname, 'public')))
 
 app.set('views', path.resolve(__dirname, 'views'))
 app.set('view engine', 'ejs')
 
-app.get('/', (req, res) => {
+app.get('/', function(req, res) {
     res.render('index')
 })
 
-app.get(/^\/(\d{5})$/, (req, res, next) => {
+app.get(/^\/(\d{5})$/, function(req, res, next) {
     let zipcode = req.params[0]
-    let location = zipdb(zipcode)
+    let location = zipdb.zipcode(zipcode)
 
     if (!location.zipcode) {
         next()
         return
     }
 
-    const latitude = location.latitude
-    const longitude = location.longitude
+    let latitude = location.latitude
+    let longitude = location.longitude
 
-    weather.forecast(latitude, longitude, (err, data) => {
+    weather.forecast(latitude, longitude, function(err, data) {
         if (err) {
             next()
             return
@@ -40,6 +40,7 @@ app.get(/^\/(\d{5})$/, (req, res, next) => {
     })
 })
 
-app.use((req, res) => res.status(404).render('404'))
-
+app.use(function(req, res) {
+    res.status(404).render('404')
+})
 app.listen(3000)
