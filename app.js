@@ -15,6 +15,8 @@ app.get('/', function(req, res) {
     res.render('index')
 })
 
+app.use(express.static('public'))
+
 app.get(/^\/(\d{5})$/, function(req, res, next) {
     let zipcode = req.params[0]
     let location = zipdb.zipcode(zipcode)
