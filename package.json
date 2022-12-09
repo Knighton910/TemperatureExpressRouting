@@ -13,7 +13,7 @@
   "license": "ISC",
   "dependencies": {
     "ejs": "^2.3.1",
-    "express": "5.0.0-alpha.2",
+    "express": "4.17.3",
     "forecastio": "^0.2.0",
     "zippity-do-dah": "0.0.x",
     "nodemon": "^1.18.11"
